@@ -1,0 +1,17 @@
+* {
+    font-family: Montserrat, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
+
+body {
+    background-color: #eaeaea
+}
+
+.title {
+    margin-top: 28px;
+    color: #838383;
+    font-size: 20px;
+    font-weight: 600
+}

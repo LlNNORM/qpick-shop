@@ -1,0 +1,41 @@
+.order__wrapper {
+    margin-top: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    grid-column:2/3;
+    grid-row:1/10;
+    
+}
+
+ .order__price {
+    display: flex;
+    padding: 21px 16px 0 21px;
+    width: 350px;
+    height: 120px;
+    border-radius: 30px;
+    background-color: #FFFFFF;
+    justify-content: space-between;
+
+}
+
+.order__btn {
+    position: absolute;
+    top: 55px;
+    border-radius: 20px;
+    background-color: #101010;
+    width: 349px;
+    height: 65px;
+    font-size: 17px;
+    font-weight: 600;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.order__btn:hover {
+    transform: scale(1.02);
+    transition: all 0.4s;
+    color: #FFCE7F;
+
+}

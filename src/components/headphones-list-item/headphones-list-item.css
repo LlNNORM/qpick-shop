@@ -1,0 +1,108 @@
+
+
+.headphones__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 30px;
+    background-color: #fff
+}
+
+.headphones__item-img {
+    min-height: 306px;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.headphones__item-descr {
+    margin-bottom: 33px;
+    padding: 0 22px 0 22px;
+    display: grid;
+    grid-template: repeat(2, 32px)/repeat(2, 155px);
+    font-size: 17px;
+    font-weight: 600
+}
+
+.headphones__item-descr-name {
+    color: #1c1c27
+}
+
+.headphones__item-descr-price {
+    justify-self: end;
+    color: #ffa542
+}
+
+.headphones__item-descr-rating {
+    display: flex;
+    align-items: center
+}
+
+.headphones__item-descr-rating div {
+    margin-left: 10px;
+    color: #838383
+}
+
+.headphones__item-descr-btn {
+    display: flex;
+    position: relative;
+    font-size: 17px;
+    font-weight: 600;
+    border: none;
+    background: 0 0;
+    cursor: pointer;
+    justify-self: end;
+    align-items: center;
+    padding:10px 20px;
+    border-top-right-radius:10px;
+    border-bottom-left-radius:10px;
+    transition:all 1s;
+}
+
+.headphones__item-descr-btn:after{
+    content:" ";
+    width:10px;
+    height:10px;
+    position:absolute;
+    border :0px solid #fff;
+    transition:all 1s;
+    }
+
+.headphones__item-descr-btn:before{
+    content:" ";
+    width:10px;
+    height:10px;
+    position:absolute;
+    border :0px solid #fff;
+    transition:all 1s;
+    }
+
+.headphones__item-descr-btn:after{
+    top:-1px;
+    left:-1px;
+    border-top:5px solid #ffa542;
+    border-left:5px solid #ffa542;
+}
+
+.headphones__item-descr-btn:before{
+    bottom:-1px;
+    right:-1px;
+    border-bottom:5px solid #ffa542;
+    border-right:5px solid #ffa542;
+  }
+
+.headphones__item-descr-btn:hover{
+    border-top-right-radius:0px;
+    border-bottom-left-radius:0px;
+}
+.headphones__item-descr-btn:hover:before{
+      
+    width:92%;
+    height:91%;
+  }
+
+.headphones__item-descr-btn:hover:after{
+      
+    width:92%;
+    height:91%;
+  }

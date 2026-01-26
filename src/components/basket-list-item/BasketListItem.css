@@ -1,0 +1,122 @@
+.basket__item {
+    display: flex;
+    justify-content: space-between;
+    height: 218px;
+    width: 633px;
+    border-radius: 30px;
+    background-color: #fff;
+    padding: 18px 28px 15px 18px;
+}
+.basket__item>div{
+    display: flex;
+}
+.basket__item-thumbnail {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.basket__item-img img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 136px;
+    width: 146px;
+    object-fit: contain;
+}
+
+.basket__item-quantity {
+    display: flex;
+}
+
+.basket__item-quantity .change {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    font-weight: 600;
+    font-size: 30px;
+    color: #fff;
+    background-color: #FFCE7F;
+    cursor: pointer;
+}
+.basket__item-quantity .change:before {
+    content: '';
+    display: block;
+    width: 14px;
+    height: 2px;
+    background-color: #fff;
+}
+
+.basket__item-quantity .change.plus:after {
+    content: '';
+    display: block;
+    width: 2px;
+    height: 14px;
+    background-color: #fff;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.basket__item-quantity .change:hover:before{
+    transition: all 0.4s;
+    background-color: rgb(255, 132, 0);
+}
+.basket__item-quantity .change.plus:hover:after{
+    transition: all 0.4s;
+    background-color: rgb(255, 132, 0);
+}
+.basket__item-quantity .change:hover {
+    transform: scale(1.2);
+    transition: all 0.4s;
+}
+.basket__item-quantity input {
+    max-width: 55px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 17px;
+    background-color: #fff;
+    border: none;
+    border-radius: 3px;
+    margin: 0 5px;
+}
+
+.basket__item-descr {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 23px;
+}
+.basket__item-model {
+    display: flex;
+    font-weight: 500;
+    font-size: 17px;
+}
+
+.basket__item-price{
+    display: flex;
+    font-weight: 600;
+    font-size: 15px;
+    color: #AAAAAA;
+}
+.basket__item-extra{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 6px;
+}
+.basket__item-totalPrice {
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.basket__item-bin:hover {
+
+    transform: scale(1.2);
+    transition: all 0.4s;
+ } 

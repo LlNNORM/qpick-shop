@@ -1,0 +1,19 @@
+.headphones {
+    width: 1110px;
+    margin: 0 auto;
+}
+
+.headphones__wrapper {
+    padding-top: 20px;
+    display: grid;
+    grid-template: 407px/repeat(3, 350px);
+    gap: 30px;
+    grid-auto-rows: auto;
+}
+
+.headphones__title {
+    margin-top: 28px;
+    color:#838383;
+    font-size: 20px;
+    font-weight: 600; 
+}
