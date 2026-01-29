@@ -1,14 +1,18 @@
 import './headphones-list.css'
-import HeadphonesListItem from '../headphones-list-item/headphones-list-item';
+import HeadphonesListItem from '../headphones-list-item/headphones-list-item'
+import type { Product } from '../../types'
 
-const HeadphonesList = ({headphones, type}) => {
+type HeadphonesListProps = {
+  headphones: Product[]
+  type: string
+}
 
-    const elements = headphones.map (item => {
-        const {id, ...itemProps} = item;
-        return (
-            <HeadphonesListItem key = {id} id={id} {...itemProps} />
-        )
+const HeadphonesList = ({ headphones, type }: HeadphonesListProps) => {
+    const elements = headphones.map((item) => {
+        const { id, ...itemProps } = item
+        return <HeadphonesListItem key={id} id={id} {...itemProps} />
     })
+
     return (
         <div className="headphones">
             <div className="headphones__title">{type}</div>
@@ -16,8 +20,7 @@ const HeadphonesList = ({headphones, type}) => {
                 {elements}
             </div>
         </div>
-        
     )
 }
 
-export default HeadphonesList;
+export default HeadphonesList

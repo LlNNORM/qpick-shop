@@ -1,9 +1,13 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import { BasketContext } from './BasketContext'
+import type { Product, BasketContextValue } from '../types'
 
-export const BasketProvider = ({ children }) => {
-    
-    const headphones = [
+type BasketProviderProps = {
+  children: React.ReactNode
+}
+
+export const BasketProvider = ({ children }: BasketProviderProps) => {
+    const headphones: Product[] = [
         {
             img: './icons/headphones/headphones1.png',
             title: 'Apple BYZ S852I',
@@ -46,8 +50,8 @@ export const BasketProvider = ({ children }) => {
             rate: 4.7,
             id : 6,
         },
-    ];
-    const wirelessHeadphones = [
+    ]
+    const wirelessHeadphones: Product[] = [
         {
             img: './icons/wireless-headphones/headphones1.png',
             title: 'Apple AirPods',
@@ -69,72 +73,92 @@ export const BasketProvider = ({ children }) => {
             rate: 4.7,
             id : 9,
         },
-    ];
-    const allProducts = [...headphones, ...wirelessHeadphones];
-    const purchasedItems = Object.keys(sessionStorage);
-    const [count, setCount] = useState(0);
+    ]
+    const allProducts: Product[] = [...headphones, ...wirelessHeadphones]
+    const purchasedItems = Object.keys(sessionStorage)
+    const [count, setCount] = useState<number>(0)
+    const [favourites, setFavourites] = useState<number[]>([])
 
-    const onAmountIncrease = (id) => {
-        setCount(count+1);
+    const onAmountIncrease = (id: number) => {
+        setCount((prev) => prev + 1)
         for (const key in sessionStorage) {
-            if (+key===id) {sessionStorage.setItem(id, +sessionStorage.getItem(key)+1)}
-        }
-    };
-
-    const onAmountDecrease = (id)=>{
-        setCount(count-1);
-        for (const key in sessionStorage) {
-            if (+key===id) {sessionStorage.setItem(id, +sessionStorage.getItem(key)-1)}
-        }
-    };
-
-    const onPurchase = (id) => {
-        setCount(count+1);
-        if (!sessionStorage.getItem(id)) {
-            sessionStorage.setItem(id, 1)
-        } else onAmountIncrease(id);
-    };
-
-    const onItemDelete = (id) => {
-        console.log(purchasedItems);
-        setCount(count-sessionStorage.getItem(id));
-        return sessionStorage.removeItem(id);
-    }
-    
-    let orderPrice = 0;
-
-    const calculateOrderPrice = (allProducts)=> {
-        allProducts.forEach (item => {
-            const {id, price} = item;
-            for (const key in sessionStorage) {
-                if (+key===id) {orderPrice += +sessionStorage.getItem(key)*price}}
-            return orderPrice;
+            if (+key === id) {
+                const current = sessionStorage.getItem(key)
+                const next = (current ? Number(current) : 0) + 1
+                sessionStorage.setItem(key, String(next))
             }
-        )
-        return orderPrice;
-    };
+        }
+    }
 
-    orderPrice = calculateOrderPrice(allProducts);
+    const onAmountDecrease = (id: number) => {
+        setCount((prev) => prev - 1)
+        for (const key in sessionStorage) {
+            if (+key === id) {
+                const current = sessionStorage.getItem(key)
+                const next = (current ? Number(current) : 0) - 1
+                sessionStorage.setItem(key, String(next))
+            }
+        }
+    }
+
+    const onPurchase = (id: number) => {
+        setCount((prev) => prev + 1)
+        const key = String(id)
+        if (!sessionStorage.getItem(key)) {
+            sessionStorage.setItem(key, '1')
+        } else {
+            onAmountIncrease(id)
+        }
+    }
+
+    const onItemDelete = (id: number) => {
+        const key = String(id)
+        const current = sessionStorage.getItem(key)
+        if (current) {
+            setCount((prev) => prev - Number(current))
+        }
+        return sessionStorage.removeItem(key)
+    }
+
+    const toggleFavourite = (id: number) => {
+        setFavourites((prev) =>
+            prev.includes(id) ? prev.filter((favId) => favId !== id) : [...prev, id],
+        )
+    }
+
+    const isFavourite = (id: number) => favourites.includes(id)
+    
+    const orderPrice = useMemo(() => {
+        return allProducts.reduce((total, item) => {
+            const key = String(item.id)
+            const quantity = sessionStorage.getItem(key)
+            if (!quantity) return total
+            return total + Number(quantity) * item.price
+        }, 0)
+    }, [allProducts, purchasedItems])
 
     useEffect(() => {
-        sessionStorage.clear();
-      }, []);
+        sessionStorage.clear()
+    }, [])
+
+    const value: BasketContextValue = {
+        count,
+        favourites,
+        onPurchase,
+        onAmountDecrease,
+        onAmountIncrease,
+        onItemDelete,
+        toggleFavourite,
+        isFavourite,
+        headphones,
+        wirelessHeadphones,
+        allProducts,
+        purchasedItems,
+        orderPrice,
+    }
 
     return (
-        <BasketContext.Provider
-            value={{
-                count,
-                onPurchase,
-                onAmountDecrease,
-                onAmountIncrease,
-                onItemDelete,
-                headphones,
-                wirelessHeadphones,
-                allProducts,
-                purchasedItems,
-                orderPrice,
-            }}
-        >
+        <BasketContext.Provider value={value}>
             {children}
         </BasketContext.Provider>
     )

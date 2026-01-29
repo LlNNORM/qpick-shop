@@ -1,5 +1,3 @@
-
-
 .headphones__item {
     display: flex;
     flex-direction: column;
@@ -12,7 +10,8 @@
     min-height: 306px;
     display: flex;
     align-items: center;
-    justify-content: center
+    justify-content: center;
+    position: relative;
 }
 
 .headphones__item-descr {
@@ -43,6 +42,36 @@
     color: #838383
 }
 
+.headphones__fav-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    background: #ffffff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+}
+
+.headphones__fav-btn img {
+    width: 16px;
+    height: 16px;
+}
+
+.headphones__fav-btn--active {
+    background: #ffa542;
+}
+
+.headphones__fav-btn--active img {
+    filter: brightness(0) invert(1);
+}
+
 .headphones__item-descr-btn {
     display: flex;
     position: relative;
@@ -53,56 +82,57 @@
     cursor: pointer;
     justify-self: end;
     align-items: center;
-    padding:10px 20px;
-    border-top-right-radius:10px;
-    border-bottom-left-radius:10px;
-    transition:all 1s;
+    padding: 10px 20px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    transition: all 1s;
 }
 
-.headphones__item-descr-btn:after{
-    content:" ";
-    width:10px;
-    height:10px;
-    position:absolute;
-    border :0px solid #fff;
-    transition:all 1s;
-    }
-
-.headphones__item-descr-btn:before{
-    content:" ";
-    width:10px;
-    height:10px;
-    position:absolute;
-    border :0px solid #fff;
-    transition:all 1s;
-    }
-
-.headphones__item-descr-btn:after{
-    top:-1px;
-    left:-1px;
-    border-top:5px solid #ffa542;
-    border-left:5px solid #ffa542;
+.headphones__item-descr-btn:after {
+    content: " ";
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    border: 0px solid #fff;
+    transition: all 1s;
 }
 
-.headphones__item-descr-btn:before{
-    bottom:-1px;
-    right:-1px;
-    border-bottom:5px solid #ffa542;
-    border-right:5px solid #ffa542;
-  }
-
-.headphones__item-descr-btn:hover{
-    border-top-right-radius:0px;
-    border-bottom-left-radius:0px;
+.headphones__item-descr-btn:before {
+    content: " ";
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    border: 0px solid #fff;
+    transition: all 1s;
 }
-.headphones__item-descr-btn:hover:before{
-      
-    width:92%;
-    height:91%;
-  }
 
-.headphones__item-descr-btn:hover:after{
-      
-    width:92%;
-    height:91%;
-  }
+.headphones__item-descr-btn:after {
+    top: -1px;
+    left: -1px;
+    border-top: 5px solid #ffa542;
+    border-left: 5px solid #ffa542;
+}
+
+.headphones__item-descr-btn:before {
+    bottom: -1px;
+    right: -1px;
+    border-bottom: 5px solid #ffa542;
+    border-right: 5px solid #ffa542;
+}
+
+.headphones__item-descr-btn:hover {
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.headphones__item-descr-btn:hover:before {
+
+    width: 92%;
+    height: 91%;
+}
+
+.headphones__item-descr-btn:hover:after {
+
+    width: 92%;
+    height: 91%;
+}

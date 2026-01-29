@@ -1,19 +1,19 @@
-.basket {
+.favourite {
     width: 1110px;
     margin: 0 auto;
 }
 
-.basket__wrapper {
+.favourite__wrapper {
     padding-top: 20px;
     display: grid;
-    grid-template: 218px/633px 350px;
     gap: 30px;
     grid-auto-rows: auto;
     justify-content: space-between;
     min-height: 100vh;
+    text-align: center;
 }
 
-.basket__title {
+.favourite__title {
     margin-top: 28px;
     color:#838383;
     font-size: 20px;
